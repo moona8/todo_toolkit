@@ -6,9 +6,10 @@ export const todoSlice = createSlice({
   initialState: {
     todos: [],
   },
-  
+
   reducers: {
     addTodo: (state, action) => {
+        console.log(action)
       state.todos.push(action.payload)
     },
     deleteTodo: (state, action) => {
@@ -17,11 +18,18 @@ export const todoSlice = createSlice({
       },
       deleteAll:(state)=>{
           state.todos=[]
-        // console.log("OK")
+        console.log(state)
+      },
+      editTodo:(state,action)=>{
+        state.todos[action.payload].editMode=true
+      },
+      saveTodo:(state,action)=>{
+        state.todos[action.payload.todoIndex].editMode=false
+        state.todos[action.payload.todoIndex].val=action.payload.value
       }
   },
 });
 
 
-export const { addTodo,deleteTodo ,deleteAll} = todoSlice.actions;
+export const { addTodo,deleteTodo ,deleteAll,editTodo,saveTodo} = todoSlice.actions;
 export default todoSlice.reducer;
