@@ -48,7 +48,7 @@ function Todo() {
             1 0 0
             0 1 0
             0 0 0
-
+ 
             OR ||
             1 1 1
             1 0 1
@@ -62,9 +62,9 @@ function Todo() {
                 <input
                   value={update[i]}
                   onChange={(e) => {
-                    const newTodos = [...update];
-                    newTodos[i] = e.target.value;
-                    setUpdate(newTodos);
+                    const newTodos = [...update]; // newTodos = ["test46", "test2"]
+                    newTodos[i] = e.target.value; // newTodos[1] = "xyz"
+                    setUpdate(newTodos); // ["test46", "xyz"]
                   }}
                 />
               ) : (
@@ -92,9 +92,9 @@ function Todo() {
               <button
                 onClick={() => {
                   if (!todo.editMode) {
-                    const newTodos = [...update];
-                    newTodos[i] = todo.val;
-                    setUpdate(newTodos);
+                    const newTodos = [...update]; // []
+                    newTodos[i] = todo.val; // [ , "test2"]
+                    setUpdate(newTodos); // [ , "test2"]
                   }
 
                   dispatch(
